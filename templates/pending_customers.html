@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Customers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .price {
+            text-align: right; /* Align price to the right */
+        }
+        button {
+            background-color: #008CBA; /* Blue background */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Font size */
+        }
+
+        button:hover {
+            background-color: #007B9E; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pending Customers</h1>
+
+    <h2>Remove Pending Customer</h2>
+    <form method="POST" style="display: flex; flex-wrap: wrap; gap: 20px;">
+        <div style="display: flex; flex-direction: column;">
+            <input type="text" name="pending_order_id" placeholder="Enter pending order id" style="width: 300px;"/>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <button type="submit">Remove</button>
+        </div>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Pending Customer ID</th>
+                <th>Buyer</th>
+                <th>Customer ID</th>
+                <th>Book Title</th>
+                <th>Charges Owed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in customers %}
+            <tr>
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}</td>
+                <td>{{ item[2] }}</td> 
+                <td>{{ item[3] }}</td>
+                <td>{{ item[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
