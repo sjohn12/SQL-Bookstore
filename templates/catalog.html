@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Catalog</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .price {
+            text-align: right; /* Align price to the right */
+        }
+
+        button {
+            background-color: #008CBA; /* Blue background */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Font size */
+        }
+
+        button:hover {
+            background-color: #007B9E; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+
+    <h1>Book Catalog</h1>
+
+    <h2>Search Book Code \ Book Title</h2>
+    <form method="POST">
+        <input type="text" name="search" placeholder="Search by book code or title" style="width: 300px;"/>
+        
+        <h2>Minimum Rating</h2>
+        <input type="number" name="min_rating" placeholder="Minimum Rating" style="width: 300px;" min="0" max="5" step="0.5" />
+        
+        <h2>Maximum Budget</h2>
+        <input type="number" name="max_budget" placeholder="Maximum Budget" style="width: 300px;" min="0" max="99"/>
+        <button type="submit">Search</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Rating</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book[0] }}</td>
+                <td>{{ book[1] }}</td>
+                <td>{{ book[2] }}</td>
+                <td>{{ book[3] }}</td>
+                <td>${{ book[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+</body>
+</html>
